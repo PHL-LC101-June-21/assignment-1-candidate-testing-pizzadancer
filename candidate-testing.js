@@ -51,18 +51,24 @@ function askQuestion() {
   for (let i = 0; i < questions.length; i++) {
     candidateAnswers.push(capitalizeString(input.question(questions[i])));
   }
-  console.log(candidateAnswers);
+  // console.log(candidateAnswers);
 }
 
 function gradeQuiz(candidateAnswers) {
+  // candidateAnswers = candidateAnswers.join(" ");
+  // correctAnswers = correctAnswers.join(" ");
+  // // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+  // for (let i = 0; i < correctAnswers.length; i++) {
+  //   console.log(`Your answer: ${candidateAnswers[i]}`);
+  //   console.log(`Correct answer: ${correctAnswers[i]}`);
 
-  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  console.log(`Your answer: ${candidateAnswer}`);
-  if (candidateAnswer === correctAnswer) {
-    console.log("You got it!");
-  } else {
-    console.log("Oh no, incorrect. Try again next time.")
-  }
+  //   if (candidateAnswers[i].toLowerCase == correctAnswers[i].toLowerCase) {
+  //     console.log("You got it!");
+  //   } else {
+  //     console.log("Oh no, incorrect. Try again next time.")
+  //   }
+  // }
+  
 
 
   let grade;
