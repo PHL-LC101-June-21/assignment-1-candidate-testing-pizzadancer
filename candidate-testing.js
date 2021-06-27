@@ -26,17 +26,20 @@ let correctAnswers = [
 let candidateAnswers = [];
 
 
+
+// Aux, Helper Functions //
 function getCandidateName() {
   // TODO 1.1b: Ask for candidate's name //
   return input.question("What is the candidate's (your) name? ");
-  
-  // console.log("Name: " + candidateName);
+}
+
+function helloMessage(name) {
+  console.log(`Hello, ${candidateName}!`);
 }
 
 function getQuestion(index) {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   return questions[index];
-  
 }
 
 function getCandidateAnswer() {
@@ -47,6 +50,46 @@ function getCorrectAnswer(index) {
   return correctAnswers[index];
 }
 
+function getPecentage(num, array) {
+  // Number of Correct Answers) / (Number of Quiz Questions) * 100
+  return (num / array.length) * 100
+}
+
+function isPassingGrade(grade) {
+  if (grade > 70) {
+    return "PASSED";
+  } else {
+    return "FAILED";
+  }
+}
+
+
+
+// Main Functions //
+function gradeQuiz(candidateAnswers) {
+  let grade = 0;
+  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+
+  // Loops through the userAnswersArray{candidateAnswers} &&  
+  // checks if the given answer is correct
+  // if correct: update grade to reflect comparison
+  for (let i = 0; i < candidateAnswers.length; i++) {
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+      grade += 1;
+    }
+  }
+  // Saves pre-converted grade (amt of questions got correct)
+  let responsesCorrectCount = grade; 
+
+  // Converting {grade} into percentage form
+  grade = getPecentage(grade, candidateAnswers);
+  
+  // Communicate Overall Grade and Status {passed/failed}
+  console.log(`>>> Overall Grade: ${grade}% (${responsesCorrectCount} of 5 responses correct) <<<`);
+  console.log(`>>> STATUS: ${isPassingGrade(grade)}`);
+
+  return grade;
+}
 
 function runQuiz() {
 
@@ -60,45 +103,17 @@ function runQuiz() {
     correctAnswer = getCorrectAnswer(i);
     console.log(`Correct Answer: ${correctAnswer}\n`);
   }
-  console.log(candidateAnswers);
 }
 
-function gradeQuiz(candidateAnswers) {
-  let grade = 0;
-  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  for (let i = 0; i < candidateAnswers.length; i++) {
-    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-      grade += 1;
-      // console.log("GOT IT");
-    }
-  }
-  // console.log
-
-  console.log(grade);
-
-  let percent = (grade / candidateAnswers.length) * 100;
-  console.log(percent);
-  let passOrFail = "";
-  if (percent > 70) {
-    passOrFail = "PASSED";
-  } else {
-    passOrFail = "FAILED";
-  }
-
-  console.log(`>>> Overall Grade: ${percent}% (${grade} of 5 responses correct) <<<`);
-  console.log(`>>> STATUS: ${passOrFail}`);
-  // Number of Correct Answers) / (Number of Quiz Questions) * 100
-
-  return grade;
-}
-
+//======= PROGRAM START =======//
 function runProgram() {
   candidateName = getCandidateName();
   // TODO 1.1c: Ask for candidate's name //
-  console.log(`Hello, ${candidateName}!`);
+  helloMessage(candidateName);
+  
   runQuiz();
   grade = gradeQuiz(this.candidateAnswers);
-  console.log(grade);
+  // console.log(grade);
 }
 
 // Don't write any code below this line //
