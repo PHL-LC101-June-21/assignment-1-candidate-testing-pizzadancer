@@ -1,3 +1,11 @@
+/*
+
+  Name: Daniel Ruiz
+  Date: 6-24-21
+  Title: Assignment 1
+
+*/
+
 const input = require('readline-sync');
 
 
